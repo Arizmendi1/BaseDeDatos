@@ -1,0 +1,14 @@
+create or procedure  as  (my_isr float,my_ret_iva float,my_iva float,total_pagar float); 
+2   cursor cur_ex is select * from honorarios for update; 
+3   begin 
+4   for xxx in cur_ex loop 
+5   my_iva:=xxx.subtotal*0.16; 
+6   my_ret_iva:=my_iva/3; 
+7   my_isr:=subtotal*0.10; 
+8   total_pagar:=subtotal + ret_iva - my_iva - my_isr; 
+9    
+10   update honorarios set iva=my_iva,isr=my_ret_iva 
+11   end loop; 
+12   end; 
+13   / 
+@Daton
